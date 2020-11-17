@@ -14,11 +14,13 @@ import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
 
 export default function FixedPage({
+  slug,
   fixedPageData,
   allPostData,
   categories,
   tags,
 }: {
+  slug: string
   fixedPageData: FixedPageData
   allPostData: PostData[]
   categories: string[]
@@ -30,6 +32,7 @@ export default function FixedPage({
       pageDescription={fixedPageData.description}
       categories={categories}
       tags={tags}
+      pageURL={`${process.env.siteURL}/${slug}`}
     >
       <div className="l-show">
         <div className="l-show__main">
@@ -52,12 +55,14 @@ export const getStaticProps: GetStaticProps = async ({
 }: {
   params: { fixedPageSlug: string }
 }) => {
-  const fixedPageData = await getFixedPageData(params.fixedPageSlug)
+  const slug = params.fixedPageSlug
+  const fixedPageData = await getFixedPageData(slug)
   const allPostData = getSortedPostsData()
   const categories = getCategories()
   const tags = getTags()
   return {
     props: {
+      slug,
       fixedPageData,
       allPostData,
       categories,

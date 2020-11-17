@@ -8,7 +8,7 @@ const { resolve } = require('path')
 const nextConfig = {
   env: {
     siteTitle: '',
-    siteURL: 'https://example.com/',
+    siteURL: 'https://example.com',
   },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
