@@ -1,0 +1,121 @@
+.article__body
+
+  h2,h3,h4,ol,ul,p,table,blockquote,pre
+    margin-top: 0
+    margin-bottom: 3rem
+
+
+  img
+    max-width: 100%
+    height: auto
+
+  img.shadow
+    box-shadow: 3px 3px 15px 0 rgba(0,0,0,.25)
+
+
+  p
+    font-size: 1.7rem
+    line-height: 2.1
+    +mediaquery-smartphone
+      font-size: 1.6rem
+      line-height: 1.9
+      font-weight: 300
+
+
+  h2
+    @extend .index__title
+
+  h3
+    font-size: 2.1rem
+    font-weight: 600
+    +mediaquery-smartphone
+      font-size: 2.0rem
+    border-bottom: 1px solid $borderColor-gray
+
+  h4
+    display: flex
+    font-size: 2.0rem
+    +mediaquery-smartphone
+      font-size: 1.9rem
+    align-items: cennter
+    &:before
+      background-color: $fontColor-sub
+      background-image: -webkit-gradient(linear,left top,left bottom,from($mainColor-lighter),to($mainColor))
+      background-image: linear-gradient($bgColor-base, $bgColor-gray)
+      content: " "
+      height: 1.75em
+      margin-right: .75em
+      width: .25em
+
+
+  ul, ol
+    li
+      margin-bottom: .5rem
+      padding-left: .5rem
+
+  ol
+    li
+      list-style-type: decimal
+      list-style-position: inside
+
+  ul
+    li
+      list-style-type: circle
+
+
+  a
+    @extend .text-link
+
+
+  table
+
+    tr
+      background-color: #fff
+
+    th
+      background-color: $mainColor-moreLighter
+      font-weight: normal
+
+
+  blockquote
+    position: relative
+    background-color: $bgColor-lightgray
+    padding-top: 3rem
+    padding-bottom: .1rem
+    padding-left: 1rem
+    padding-right: 1rem
+    &:before
+      font-family: "Font Awesome 5 Free"
+      font-weight: 900
+      content: "\f10d"
+      display: block
+      position: absolute
+      top: .4rem
+      left: .3rem
+      font-size: 1.7rem
+      color: $fontColor-gray
+    &:after
+      font-family: "Font Awesome 5 Free"
+      font-weight: 900
+      content: "\f10e"
+      display: block
+      position: absolute
+      bottom: .4rem
+      right: .3rem
+      font-size: 2.0rem
+      color: $fontColor-gray
+
+  .link-card
+    display: inline-flex
+    align-items: center
+    padding-right: 2rem
+    border: 1px solid $borderColor-gray
+    color: $fontColor
+    font-weight: 500
+    &:hover
+      background-color: $bgColor-lightgray
+      border-color: $borderColor-darkgray
+
+    img
+      max-width: 150px
+      margin-right: 2rem

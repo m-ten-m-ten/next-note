@@ -1,0 +1,86 @@
+.navbar__menu-tablet
+
+
+.navbar__menu-tablet-body
+  +animation
+  padding: 0
+  position: fixed
+  top: $height-header-tablet
+  left: 0
+  width: 100%
+  background-color: $subColor
+  overflow: hidden
+
+
+.navbar__menu-tablet-item
+  padding: 1.5rem 0
+  border-top: 1px solid $borderColor-lightgray
+
+  a
+    color: $fontColor-inverse
+    &:hover
+      opacity: 0.7
+
+
+.navbar__menu-tablet-link
+  display: block
+  position: relative
+  text-align: center
+  color: $fontColor-inverse
+
+
+.navbar__menu-tablet-innerList
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+  margin-top: 1rem
+
+  a
+    display: block
+    padding: 1rem
+    margin-bottom: 1rem
+    margin-right: 10px
+    border: 1px solid $borderColor-lightgray
+    border-radius: 25px
+
+
+.navbar__menu-tablet-toggle
+  position: fixed
+  top: ($height-header-tablet - 35px) / 2
+  right: 12px
+  width: 35px
+  height: 35px
+  background-color: $mainColor
+  border-radius: 18px
+  cursor: pointer
+
+  .navbar__menu-tablet-toggle-bar,
+  &::before,
+  &::after
+    +animation
+    display: block
+    position: absolute
+    top: 16px
+    left: 11px
+    width: 23px
+    height: 3px
+    background-color: $bgColor-base
+
+  &::before
+    transform: translate(0, 9px)
+    content: ""
+
+  &::after
+    transform: translate(0, -9px)
+    content: ""
+
+  &.is-open .navbar__menu-tablet-toggle-bar
+    opacity: 0
+
+  &.is-open::before
+    transform: rotate(-45deg)
+
+  &.is-open::after
+    transform: rotate(45deg)
+

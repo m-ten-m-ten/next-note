@@ -1,0 +1,27 @@
+.header
+  background-color: $mainColor
+  color: $fontColor-inverse
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 10
+
+.navbar
+  height: $height-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  +mediaquery-tablet
+    height: $height-header-tablet
+
+
+.navbar__logo
+  a
+    display: block
+    color: $fontColor-inverse
+    line-height: $height-header
+    font-family: 'Comfortaa','Pacifico', cursive, sans-serif
+    font-size: 3.2rem
+    +mediaquery-tablet
+      font-size: 2.5rem

@@ -1,0 +1,14 @@
+.index__title
+  display: flex
+  font-size: 2.8rem
+  +mediaquery-smartphone
+    font-size: 2.3rem
+  align-items: center
+  &:before
+    background-color: $mainColor
+    background-image: -webkit-gradient(linear,left top,left bottom,from($mainColor-lighter),color-stop(72%,$mainColor),to($mainColor-darker))
+    background-image: linear-gradient($mainColor-lighter, $mainColor 70%, $mainColor-darker)
+    content: " "
+    height: 1.75em
+    margin-right: .75em
+    width: .25em

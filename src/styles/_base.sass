@@ -1,0 +1,243 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  height: 100%
+  font-size: 58.5%
+
+body
+  height: 100%
+  font-family: Avenir, "Hiragino Sans", "\6E38\30B4\30B7\30C3\30AF", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4   Pro", "Hiragino Kaku Gothic Pro", "\30E1\30A4\30EA\30AA", "Meiryo", sans-serif
+  font-weight: 300
+  background-color: #fff
+  color: #2a292a
+  font-size: 1.6rem
+  line-height: 1.7
+
+#__next
+  position: relative
+  min-height: 100%
+
+#main
+  padding-bottom: $height-footer
+
+footer
+  width: 100%
+  height: $height-footer
+  position: absolute
+  bottom: 0
+
+h1
+  font-size: 2.8rem
+  font-weight: normal
+  line-height: 1.2
+
+@media only screen and (max-width: 768px)
+  h1
+    font-size: 2.2rem
+
+h2
+  font-size: 2.4rem
+  font-weight: normal
+  line-height: 1.2
+
+@media only screen and (max-width: 768px)
+  h2
+    font-size: 2.0rem
+
+h3, h4
+  font-weight: normal
+
+a
+  transition-duration: 250ms
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1)
+  transition-property: all
+  color: #2a292a
+  text-decoration: none
+
+p
+  margin: 15px 0
+
+ul
+  list-style: none inside
+
+input
+  outline: 0
+
+table
+  width: 100%
+  border-collapse: collapse
+  border: 1px solid #cbd5e0
+
+  tr
+    border-bottom: 1px solid #cbd5e0
+
+    &:last-child
+      border-bottom: 0
+
+    &:nth-of-type(even)
+      background-color: #EFF5F8
+
+  th
+    text-align: left
+    padding: 5px 10px
+
+  td
+    padding: 5px 10px
+
+hr
+  height: 0px
+  margin: 1rem 0 2rem 0
+  border: none
+  border-top: 1px solid #cbd5e0
+
+small
+  line-height: 1.0
+
+button
+  background-color: transparent
+  border: none
+  cursor: pointer
+  outline: none
+  padding: 0
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+
+.block
+  display: block
+
+.hidden
+  display: none
+
+.nowrap
+  white-space: nowrap
+
+.emphasis
+  font-weight: bold
+  color: $blue
+  font-size: 2.0rem
+
+.w-full
+  width: 100%
+
+.clear-fix
+  +clear-fix
+
+.float-left
+  display: block
+  float: left
+
+.circle
+  border-radius: 50%
+
+.inline-block
+  display: inline-block
+
+.text-center
+  text-align: center
+
+.text-blue
+  color: $blue
+
+.text-red
+  color: $red
+
+.text-link
+  color: $textLinkColor
+  text-decoration: underline
+  &:hover
+    opacity: 0.8
+
+.error-text
+  margin-top: 5px
+  color: $fontColor-error
+
+.pointer
+  cursor: pointer
+
+// clearFix
+.cf
+  content: ""
+  display: block
+  clear: both
+
+
+// margin
+.mr0
+  margin-right: 0
+
+
+.mt5
+  margin-top: 5px
+.mb5
+  margin-bottom: 5px
+.ml5
+  margin-left: 5px
+.mr5
+  margin-right: 5px
+
+
+.mt10
+  margin-top: 10px
+.mb10
+  margin-bottom: 10px
+.ml10
+  margin-left: 10px
+.mr10
+  margin-right: 10px
+
+
+.mt1
+  margin-top: 1rem
+.mb1
+  margin-bottom: 1rem
+.ml1
+  margin-left: 1rem
+.mr1
+  margin-right: 1rem
+
+.mt2
+  margin-top: 2rem
+.mb2
+  margin-bottom: 2rem
+.ml2
+  margin-left: 2rem
+.mr2
+  margin-right: 2rem
+
+// mediaquery
+.forSP
+  display: none
+  +mediaquery-smartphone
+    display: block
+
+.forTablet
+  display: none
+  +mediaquery-tablet
+    display: block
+
+.overSP
+  +mediaquery-smartphone
+    display: none
+
+.overTablet
+  +mediaquery-tablet
+    display: none
+
+.overPC
+  +mediaquery-pc
+    display: none
+
+
+// font size
+.text-normal
+  font-size: $fontSize-base
+
+.text-sm
+  font-size: 1.4rem
+
+.text-xs
+  font-size: 1.2rem

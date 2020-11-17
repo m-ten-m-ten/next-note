@@ -1,0 +1,17 @@
+.show__side-section
+  margin-top: 2rem
+
+
+.show__side-section-title
+  display: flex
+  font-size: 2rem
+  align-items: center
+  margin-bottom: 1.5rem
+  &:before
+    background-color: $mainColor
+    background-image: -webkit-gradient(linear,left top,left bottom,from($mainColor-lighter),color-stop(72%,$mainColor),to($mainColor-darker))
+    background-image: linear-gradient($mainColor-lighter, $mainColor 70%, $mainColor-darker)
+    content: " "
+    height: 1.75em
+    margin-right: .75em
+    width: .25em

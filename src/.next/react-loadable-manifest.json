@@ -1,0 +1,26 @@
+{
+  "./Header": [
+    {
+      "id": "./components/Header.tsx",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./components/NavbarMenu.tsx",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./components/NavbarMenuAccordion.tsx",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./components/NavbarMenuTablet.tsx",
+      "file": "static/chunks/1.js"
+    }
+  ],
+  "./dev/noop": [
+    {
+      "id": "../node_modules/next/dist/client/dev/noop.js",
+      "file": "static/chunks/0.js"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+.backTop
+  +animation
+  display: flex
+  position: fixed
+  bottom: -100px
+  right: 2rem
+  width: 45px
+  height: 45px
+  justify-content: center
+  align-items: center
+  color: $fontColor-gray
+  background-color: $bgColor-white
+  border-radius: 45px
+  cursor: pointer
+  box-shadow: 3px 3px 15px 0 rgba(0,0,0,.25)
+
+
+  &.is-visible
+    bottom: 2rem
+
+    &:hover
+      color: $fontColor
+      bottom: 3rem
