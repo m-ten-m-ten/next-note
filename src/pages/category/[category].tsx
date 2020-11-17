@@ -40,7 +40,7 @@ export default function CategoryIndex({
         />
 
         <div className="index__title">{category}の記事一覧</div>
-        <PostList allPostData={categoryPostsData} />
+        <PostList allPostData={categoryPostsData} postCount="" />
       </section>
     </Layout>
   )

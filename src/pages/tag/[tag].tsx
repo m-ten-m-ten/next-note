@@ -17,7 +17,7 @@ export default function TagIndex({
   tags,
 }: {
   tag: string
-  tagPostsData: PostData
+  tagPostsData: PostData[]
   categories: string[]
   tags: string[]
 }): JSX.Element {
@@ -40,7 +40,7 @@ export default function TagIndex({
         />
 
         <div className="index__title">{tag}の記事一覧</div>
-        <PostList allPostData={tagPostsData} />
+        <PostList allPostData={tagPostsData} postCount="" />
       </section>
     </Layout>
   )
