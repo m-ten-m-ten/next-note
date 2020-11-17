@@ -23,10 +23,11 @@ export default function TagIndex({
 }): JSX.Element {
   return (
     <Layout
-      pageTitle="Home"
-      pageDescription="Home"
+      pageTitle={`タグ「${tag}」の記事一覧`}
+      pageDescription={`タグ「${tag}」の記事一覧ページ`}
       categories={categories}
       tags={tags}
+      pageURL={`${process.env.siteURL}/tag/${tag}`}
     >
       <section className="l-index">
         <Breadcrumb

@@ -23,10 +23,11 @@ export default function CategoryIndex({
 }): JSX.Element {
   return (
     <Layout
-      pageTitle="Home"
-      pageDescription="Home"
+      pageTitle={`カテゴリー「${category}」の記事一覧`}
+      pageDescription={`カテゴリー「${category}」の記事一覧ページ`}
       categories={categories}
       tags={tags}
+      pageURL={`${process.env.siteURL}/category/${category}`}
     >
       <section className="l-index">
         <Breadcrumb
