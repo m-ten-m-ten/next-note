@@ -1,0 +1,60 @@
+.toc
+  border: 1px solid $borderColor-gray
+
+  li
+    margin-bottom: 1rem
+
+  a
+    display: block
+    color: $textLinkColor
+    &:hover
+      font-weight: 500
+
+    &:before
+      content: "#"
+      margin-right: .5rem
+      color: $fontColor-gray
+      font-size: 1.5rem
+
+
+.toc__title
+  padding: 1rem
+
+
+.toc__body
+  +animation
+  display: block
+  overflow: hidden
+  padding: 0 1rem 0 1rem
+
+  #sidebar &
+    display: block
+
+
+.toc__title
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 2rem
+  &.accordion-trigger
+    &:after
+      content: "open"
+      font-weight: 600
+      display: inline-block
+      margin-left: 1rem
+      padding: .2rem .5rem
+      border: 1px solid $borderColor-gray
+      border-radius: 1.4rem
+      color: $textLinkColor
+      font-size: 1.5rem
+      cursor: pointer
+    &.is-open
+      &:after
+        content: "close"
+
+
+.toc-h3
+  margin-left: 1.5rem
+
+.toc-h4
+  margin-left: 2.5rem
