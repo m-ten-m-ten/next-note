@@ -7,6 +7,7 @@ import {
   getSortedCategoryPostsData,
   getCategories,
   getTags,
+  getSortedPostsData,
 } from '../../lib/posts'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
@@ -55,8 +56,9 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const category = params.category
   const categoryPostsData = getSortedCategoryPostsData(category)
-  const categories = getCategories()
-  const tags = getTags()
+  const allPostData = getSortedPostsData()
+  const categories = getCategories(allPostData)
+  const tags = getTags(allPostData)
   return {
     props: {
       category,

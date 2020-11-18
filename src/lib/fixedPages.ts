@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import { getTocIdAddedContentHtml } from './toc'
 
 const fixedPagesDirectory = path.join(process.cwd(), 'fixedPages')
 
@@ -27,7 +28,11 @@ export function getAllFixedPageSlugs(): {
   })
 }
 
-export async function getFixedPageData(slug: string) {
+export async function getFixedPageData(
+  slug: string
+): Promise<{
+  contentHtml: string
+}> {
   const fullPath = path.join(fixedPagesDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
@@ -35,8 +40,8 @@ export async function getFixedPageData(slug: string) {
   const processedContent = await remark()
     .use(html)
     .process(matterRusult.content)
-  const contentHtml = processedContent.toString()
-
+  let contentHtml = processedContent.toString()
+  contentHtml = getTocIdAddedContentHtml(contentHtml)
   return {
     contentHtml,
     ...matterRusult.data,

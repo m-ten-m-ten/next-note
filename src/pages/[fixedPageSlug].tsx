@@ -12,6 +12,7 @@ import {
 } from '../lib/fixedPages'
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
+import Toc from '../components/Toc'
 
 export default function FixedPage({
   slug,
@@ -37,6 +38,7 @@ export default function FixedPage({
       <div className="l-show">
         <div className="l-show__main">
           <div className="page">
+            <Toc contentHtml={fixedPageData.contentHtml} />
             <div className="page__body">
               <div
                 dangerouslySetInnerHTML={{ __html: fixedPageData.contentHtml }}
@@ -44,7 +46,10 @@ export default function FixedPage({
             </div>
           </div>
         </div>
-        <Sidebar allPostData={allPostData} />
+        <Sidebar
+          allPostData={allPostData}
+          contentHtml={fixedPageData.contentHtml}
+        />
       </div>
     </Layout>
   )
@@ -58,8 +63,8 @@ export const getStaticProps: GetStaticProps = async ({
   const slug = params.fixedPageSlug
   const fixedPageData = await getFixedPageData(slug)
   const allPostData = getSortedPostsData()
-  const categories = getCategories()
-  const tags = getTags()
+  const categories = getCategories(allPostData)
+  const tags = getTags(allPostData)
   return {
     props: {
       slug,

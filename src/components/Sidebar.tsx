@@ -1,16 +1,18 @@
 import PostList from './PostList'
+import Toc from './Toc'
+import { PostData } from '../lib/posts'
 
-export default function Sidebar({ allPostData }) {
+export default function Sidebar({
+  allPostData,
+  contentHtml,
+}: {
+  allPostData: PostData[]
+  contentHtml: string
+}): JSX.Element {
   return (
     <div id="sidebar" className="show__side">
-      {
-        // -- Table of contents サイドバーのはアコーディオン化しない --
-      }
       <div className="show__side-section">
-        <div className="toc">
-          <div className="toc__title">Table of Contents</div>
-          <div className="toc__body"></div>
-        </div>
+        <Toc contentHtml={contentHtml} />
       </div>
 
       <div id="sidebar__fixed">

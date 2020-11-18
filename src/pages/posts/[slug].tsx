@@ -12,6 +12,7 @@ import Layout from '../../components/Layout'
 import PostAttr from '../../components/PostAttr'
 import Breadcrumb from '../../components/Breadcrumb'
 import Sidebar from '../../components/Sidebar'
+import Toc from '../../components/Toc'
 
 export default function Post({
   slug,
@@ -67,13 +68,13 @@ export default function Post({
               tags={postData.tags || null}
             />
             <hr className="overPC" />
-            <div className="toc"></div>
+            <Toc contentHtml={postData.contentHtml} />
             <div className="article__body">
               <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </div>
           </article>
         </div>
-        <Sidebar allPostData={allPostData} />
+        <Sidebar allPostData={allPostData} contentHtml={postData.contentHtml} />
       </div>
     </Layout>
   )
@@ -87,8 +88,8 @@ export const getStaticProps: GetStaticProps = async ({
   const slug = params.slug
   const postData = await getPostData(slug)
   const allPostData = getSortedPostsData()
-  const categories = getCategories()
-  const tags = getTags()
+  const categories = getCategories(allPostData)
+  const tags = getTags(allPostData)
   return {
     props: {
       slug,

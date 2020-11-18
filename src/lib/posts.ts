@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import { getTocIdAddedContentHtml } from './toc'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -87,7 +88,10 @@ export async function getPostData(
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
-  const contentHtml = processedContent.toString()
+  let contentHtml = processedContent.toString()
+
+  //<h2or3>にTable of contents用のid付与。
+  contentHtml = getTocIdAddedContentHtml(contentHtml)
 
   return {
     slug,
@@ -96,10 +100,9 @@ export async function getPostData(
   }
 }
 
-export function getCategories(): string[] {
-  const allPostData = getSortedPostsData()
+export function getCategories(allPostData: PostData[]): string[] {
   const categories = []
-  allPostData.forEach((post) => {
+  allPostData.forEach((post: PostData) => {
     if (post.category && !categories.includes(post.category)) {
       categories.push(post.category)
     }
@@ -112,7 +115,8 @@ export function getCategoryPaths(): {
     category: string
   }
 }[] {
-  const categories = getCategories()
+  const allPostData = getSortedPostsData()
+  const categories = getCategories(allPostData)
   return categories.map((category) => {
     return {
       params: {
@@ -125,7 +129,7 @@ export function getCategoryPaths(): {
 export function getSortedCategoryPostsData(category: string): PostData[] {
   const allPostData = getSortedPostsData()
   const categoryPostsData = []
-  allPostData.forEach((post) => {
+  allPostData.forEach((post: PostData) => {
     if (post.category === category) {
       categoryPostsData.push(post)
     }
@@ -133,10 +137,9 @@ export function getSortedCategoryPostsData(category: string): PostData[] {
   return categoryPostsData
 }
 
-export function getTags(): string[] {
-  const allPostData = getSortedPostsData()
+export function getTags(allPostData: PostData[]): string[] {
   const tags = []
-  allPostData.forEach((post) => {
+  allPostData.forEach((post: PostData) => {
     if (post.tags) {
       post.tags.forEach((tag) => {
         if (!tags.includes(tag)) {
@@ -153,7 +156,8 @@ export function getTagPaths(): {
     tag: string
   }
 }[] {
-  const tags = getTags()
+  const allPostData = getSortedPostsData()
+  const tags = getTags(allPostData)
   return tags.map((tag) => {
     return {
       params: {
@@ -166,7 +170,7 @@ export function getTagPaths(): {
 export function getSortedTagPostsData(tag: string): PostData[] {
   const allPostData = getSortedPostsData()
   const tagPostsData = []
-  allPostData.forEach((post) => {
+  allPostData.forEach((post: PostData) => {
     if (post.tags && post.tags.includes(tag)) {
       tagPostsData.push(post)
     }

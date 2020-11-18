@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import PostList from '../../components/PostList'
 import Breadcrumb from '../../components/Breadcrumb'
 import {
+  getSortedPostsData,
   getTagPaths,
   getSortedTagPostsData,
   getCategories,
@@ -55,8 +56,9 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const tag = params.tag
   const tagPostsData = getSortedTagPostsData(tag)
-  const categories = getCategories()
-  const tags = getTags()
+  const allPostData = getSortedPostsData()
+  const categories = getCategories(allPostData)
+  const tags = getTags(allPostData)
   return {
     props: {
       tag,

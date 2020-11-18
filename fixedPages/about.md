@@ -21,8 +21,8 @@ description: "当サイト運営者の紹介"
 
 ### フロントエンド
 
-* HTML, Pug, CSS, Sass
-* jQuery
+- HTML, Pug, CSS, Sass
+- jQuery
 
 ### バックエンド
 
