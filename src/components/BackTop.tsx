@@ -2,7 +2,7 @@ import { useState } from 'react'
 import EventListener from 'react-event-listener'
 
 // バックトップの出現スクロールポイント
-const BP = 40
+const BP = 30
 
 export default function BackTop(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false)
