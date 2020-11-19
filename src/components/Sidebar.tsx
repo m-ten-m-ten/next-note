@@ -1,14 +1,10 @@
 import { useEffect, useRef } from 'react'
-import PostList from './PostList'
 import Toc from './Toc'
-import { PostData } from '../lib/posts'
 import EventListener from 'react-event-listener'
 
 export default function Sidebar({
-  allPostData,
   contentHtml,
 }: {
-  allPostData: PostData[]
   contentHtml: string
 }): JSX.Element {
   const sidebarFixedRef = useRef(null)
@@ -79,11 +75,6 @@ export default function Sidebar({
       <div id="sidebar__fixed" ref={sidebarFixedRef}>
         <div className="show__side-section">
           <Toc contentHtml={contentHtml} />
-        </div>
-
-        <div className="show__side-section">
-          <h3 className="show__side-section-title">最新記事</h3>
-          <PostList allPostData={allPostData} postCount="5" />
         </div>
       </div>
     </div>
