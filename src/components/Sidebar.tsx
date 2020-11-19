@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import PostList from './PostList'
 import Toc from './Toc'
 import { PostData } from '../lib/posts'
@@ -17,6 +17,10 @@ export default function Sidebar({
     sidebarFixedHeight: number, // 固定する要素の高さ。数値判定に使用するのでNumber化
     sidebarFixedWitdh: string, // 固定する要素の横幅(px付き)
     notSetValue = true // 初期値セット判定用
+
+  useEffect(() => {
+    setValue()
+  }, [])
 
   function setValue() {
     sidebarFixedOriginalTop = sidebarFixedRef.current.getBoundingClientRect()
@@ -71,12 +75,7 @@ export default function Sidebar({
 
   return (
     <div id="sidebar" className="show__side">
-      <EventListener
-        target="window"
-        onLoad={setValue}
-        onResize={followUp}
-        onScroll={followUp}
-      />
+      <EventListener target="window" onResize={followUp} onScroll={followUp} />
       <div id="sidebar__fixed" ref={sidebarFixedRef}>
         <div className="show__side-section">
           <Toc contentHtml={contentHtml} />
