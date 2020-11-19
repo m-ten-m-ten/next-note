@@ -11,8 +11,7 @@ export default function Sidebar({
   allPostData: PostData[]
   contentHtml: string
 }): JSX.Element {
-  const sidebarRef = useRef()
-  const sidebarFixedRef = useRef()
+  const sidebarFixedRef = useRef(null)
 
   let sidebarFixedOriginalTop: number, //固定する要素のY軸初期位置
     sidebarFixedHeight: number, // 固定する要素の高さ。数値判定に使用するのでNumber化
@@ -71,7 +70,7 @@ export default function Sidebar({
   }
 
   return (
-    <div id="sidebar" className="show__side" ref={sidebarRef}>
+    <div id="sidebar" className="show__side">
       <EventListener
         target="window"
         onLoad={setValue}
