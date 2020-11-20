@@ -1,10 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import {
-  getSortedPostsData,
-  getCategories,
-  getTags,
-  PostData,
-} from '../lib/posts'
+import { getSortedPostsData, getCategories, getTags } from '../lib/posts'
 import {
   FixedPageData,
   getAllFixedPageSlugs,
@@ -17,13 +12,11 @@ import Toc from '../components/Toc'
 export default function FixedPage({
   slug,
   fixedPageData,
-  allPostData,
   categories,
   tags,
 }: {
   slug: string
   fixedPageData: FixedPageData
-  allPostData: PostData[]
   categories: string[]
   tags: string[]
 }): JSX.Element {
@@ -46,10 +39,7 @@ export default function FixedPage({
             </div>
           </div>
         </div>
-        <Sidebar
-          allPostData={allPostData}
-          contentHtml={fixedPageData.contentHtml}
-        />
+        <Sidebar contentHtml={fixedPageData.contentHtml} />
       </div>
     </Layout>
   )

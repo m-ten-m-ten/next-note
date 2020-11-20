@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import {
-  PostData,
   getSortedPostsData,
   getAllPostSlugs,
   getPostData,
@@ -17,13 +16,11 @@ import Toc from '../../components/Toc'
 export default function Post({
   slug,
   postData,
-  allPostData,
   categories,
   tags,
 }: {
   slug: string
   postData: PostDataIncludeContentHTML
-  allPostData: PostData[]
   categories: string[]
   tags: string[]
 }): JSX.Element {
@@ -74,7 +71,7 @@ export default function Post({
             </div>
           </article>
         </div>
-        <Sidebar allPostData={allPostData} contentHtml={postData.contentHtml} />
+        <Sidebar contentHtml={postData.contentHtml} />
       </div>
     </Layout>
   )
