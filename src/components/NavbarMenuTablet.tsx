@@ -65,7 +65,7 @@ export default function NavbarMenuTablet({
           <div className="navbar__menu-tablet-innerList l-container">
             {categories.map((category) => {
               return (
-                <Link href={`/category/${category}`} key={category}>
+                <Link href={`/category/${category}/1`} key={category}>
                   <a onClick={close}>{category}</a>
                 </Link>
               )
@@ -77,7 +77,7 @@ export default function NavbarMenuTablet({
           <div className="navbar__menu-tablet-innerList l-container">
             {tags.map((tag) => {
               return (
-                <Link href={`/tag/${tag}`} key={tag}>
+                <Link href={`/tag/${tag}/1`} key={tag}>
                   <a onClick={close}>{tag}</a>
                 </Link>
               )

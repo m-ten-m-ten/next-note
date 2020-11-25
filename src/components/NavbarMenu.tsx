@@ -33,14 +33,14 @@ export default function NavbarMenu({
 
         <NavbarMenuAccordion
           list={categories}
-          listTitle="category"
+          subDir="catogory"
           menuToggleEN="Category"
           menuToggleJA="カテゴリー"
         />
 
         <NavbarMenuAccordion
           list={tags}
-          listTitle="tag"
+          subDir="tag"
           menuToggleEN="Tags"
           menuToggleJA="タグ"
         />

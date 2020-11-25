@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getSortedPostsData, getCategories, getTags } from '../lib/posts'
+import { getAllPostData, PostData } from '../lib/posts'
 import {
   FixedPageData,
   getAllFixedPageSlugs,
@@ -12,21 +12,18 @@ import Toc from '../components/Toc'
 export default function FixedPage({
   slug,
   fixedPageData,
-  categories,
-  tags,
+  allPostData,
 }: {
   slug: string
   fixedPageData: FixedPageData
-  categories: string[]
-  tags: string[]
+  allPostData: PostData[]
 }): JSX.Element {
   return (
     <Layout
       pageTitle={fixedPageData.title}
       pageDescription={fixedPageData.description}
-      categories={categories}
-      tags={tags}
       pageURL={`${process.env.siteURL}/${slug}`}
+      allPostData={allPostData}
     >
       <div className="l-show">
         <div className="l-show__main">
@@ -52,16 +49,12 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = params.fixedPageSlug
   const fixedPageData = await getFixedPageData(slug)
-  const allPostData = getSortedPostsData()
-  const categories = getCategories(allPostData)
-  const tags = getTags(allPostData)
+  const allPostData = getAllPostData()
   return {
     props: {
       slug,
       fixedPageData,
       allPostData,
-      categories,
-      tags,
     },
   }
 }

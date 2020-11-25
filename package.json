@@ -17,7 +17,8 @@
     "react-event-listener": "^0.6.6",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
-    "sass": "^1.29.0"
+    "sass": "^1.29.0",
+    "vercel": "^21.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.7",

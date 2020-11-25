@@ -1,0 +1,93 @@
+.button-fit
+  +animation
+  display: block
+  position: relative
+  padding: 1rem
+  text-align: center
+  border: 1px solid $borderColor-gray
+  border-radius: 4px
+  box-shadow: 0 4px 0 0 rgba(0,0,0,.11)
+  
+  &:hover
+    background-color: #000
+    color: #fff
+
+  &:before
+    font-family: "Font Awesome 5 Free"
+    font-weight: 900
+    content: "\f061"
+    position: absolute
+    top: .7rem
+    right: 1.5rem
+    font-size: 1.9rem
+
+.button
+  padding: 5px 10px
+  color: $fontColor-inverse
+  background-color: $btnColor
+  border: 1px solid $btnColor
+  text-align: center
+  border-radius: 5px
+  outline: 0
+
+
+.button__red
+  @extend .button
+  background-color: $red
+  border-color: $red
+
+
+.button__inverse
+  @extend .button
+  color: $btnColor
+  background-color: $bgColor-base
+
+
+.button__slim
+  @extend .button
+  padding: 1px 5px
+
+
+.button__slimInverse
+  @extend .button__inverse
+  padding: 1px 5px
+
+
+.button__facebook
+  @extend.button
+  color: $facebook
+  border-color: $facebook
+
+  &:hover
+    color: $fontColor-inverse
+    background-color: $facebook
+
+
+.button__twitter
+  @extend.button
+  color: $twitter
+  border-color: $twitter
+
+  &:hover
+    color: $fontColor-inverse
+    background-color: $twitter
+
+
+.button__hatena
+  @extend.button
+  color: $hatena
+  border-color: $hatena
+
+  &:hover
+    color: $fontColor-inverse
+    background-color: $hatena
+
+.button__line
+  @extend.button
+  color: $line
+  border-color: $line
+
+  &:hover
+    color: $fontColor-inverse
+    background-color: $line
+

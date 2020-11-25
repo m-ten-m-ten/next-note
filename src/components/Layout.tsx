@@ -1,21 +1,19 @@
-import dynamic from 'next/dynamic'
 import Footer from './Footer'
 import Meta from './Meta'
 import BackTop from './BackTop'
-const Header = dynamic(() => import('./Header'), { ssr: false })
+import Header from './Header'
+import { PostData } from '../lib/posts'
 
 export default function Layout({
   pageTitle,
   pageDescription,
-  categories,
-  tags,
+  allPostData,
   children,
   pageURL,
 }: {
   pageTitle: string
   pageDescription: string
-  categories: string[]
-  tags: string[]
+  allPostData: PostData[]
   children: any
   pageURL: string | null
 }): JSX.Element {
@@ -26,7 +24,7 @@ export default function Layout({
         pageDescription={pageDescription}
         pageURL={pageURL}
       />
-      <Header categories={categories} tags={tags} />
+      <Header allPostData={allPostData} />
       <div id="main" className="l-container">
         <div className="l-content">{children}</div>
       </div>

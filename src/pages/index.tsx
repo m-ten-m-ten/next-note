@@ -1,46 +1,36 @@
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
-import {
-  PostData,
-  getSortedPostsData,
-  getCategories,
-  getTags,
-} from '../lib/posts'
+import { getAllPostData, PostData } from '../lib/posts'
 
 export default function Home({
   allPostData,
-  categories,
-  tags,
 }: {
   allPostData: PostData[]
-  categories: string[]
-  tags: string[]
 }): JSX.Element {
   return (
     <Layout
       pageTitle="Home"
       pageDescription="Home"
-      categories={categories}
-      tags={tags}
+      allPostData={allPostData}
       pageURL={process.env.siteURL}
     >
       <section className="l-index">
-        <PostList allPostData={allPostData} postCount="" />
+        <PostList postData={allPostData} postCount="3" />
+        <Link href="/page/1">
+          <a className="button-fit mt2 mb2">もっと見る</a>
+        </Link>
       </section>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostData = getSortedPostsData()
-  const categories = getCategories(allPostData)
-  const tags = getTags(allPostData)
+  const allPostData = getAllPostData()
   return {
     props: {
       allPostData,
-      categories,
-      tags,
     },
   }
 }
