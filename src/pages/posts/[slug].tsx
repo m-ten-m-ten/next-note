@@ -1,11 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import {
-  getSortedPostsData,
+  getAllPostData,
   getAllPostSlugs,
   getPostData,
-  getCategories,
-  getTags,
   PostDataIncludeContentHTML,
+  PostData,
 } from '../../lib/posts'
 import Layout from '../../components/Layout'
 import PostAttr from '../../components/PostAttr'
@@ -16,20 +15,17 @@ import Toc from '../../components/Toc'
 export default function Post({
   slug,
   postData,
-  categories,
-  tags,
+  allPostData,
 }: {
   slug: string
   postData: PostDataIncludeContentHTML
-  categories: string[]
-  tags: string[]
+  allPostData: PostData[]
 }): JSX.Element {
   return (
     <Layout
       pageTitle={postData.title}
       pageDescription={postData.description}
-      categories={categories}
-      tags={tags}
+      allPostData={allPostData}
       pageURL={`${process.env.siteURL}/posts/${slug}`}
     >
       <div className="l-show">
@@ -84,16 +80,12 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = params.slug
   const postData = await getPostData(slug)
-  const allPostData = getSortedPostsData()
-  const categories = getCategories(allPostData)
-  const tags = getTags(allPostData)
+  const allPostData = getAllPostData()
   return {
     props: {
       slug,
       postData,
       allPostData,
-      categories,
-      tags,
     },
   }
 }

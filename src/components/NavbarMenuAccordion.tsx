@@ -3,12 +3,12 @@ import Link from 'next/link'
 
 export default function NavbarMenuAccordion({
   list,
-  listTitle,
+  subDir,
   menuToggleEN,
   menuToggleJA,
 }: {
   list: string[]
-  listTitle: string
+  subDir: string
   menuToggleEN: string
   menuToggleJA: string
 }): JSX.Element {
@@ -65,7 +65,7 @@ export default function NavbarMenuAccordion({
         <div className="navbar__menu-child-inner l-container">
           {list.map((listItem) => {
             return (
-              <Link href={`/${listTitle}/${listItem}`} key={listItem}>
+              <Link href={`/${subDir}/${listItem}/1`} key={listItem}>
                 <a onClick={close}>{listItem}</a>
               </Link>
             )

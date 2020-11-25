@@ -24,7 +24,7 @@ export interface PostDataIncludeContentHTML extends PostData {
   contentHtml: string
 }
 
-export function getSortedPostsData(): PostData[] {
+export function getAllPostData(): PostData[] {
   // /posts 配下のファイル名を取得する。
   const fileNames = fs.readdirSync(postsDirectory)
 
@@ -98,82 +98,4 @@ export async function getPostData(
     contentHtml,
     ...matterResult.data,
   }
-}
-
-export function getCategories(allPostData: PostData[]): string[] {
-  const categories = []
-  allPostData.forEach((post: PostData) => {
-    if (post.category && !categories.includes(post.category)) {
-      categories.push(post.category)
-    }
-  })
-  return categories
-}
-
-export function getCategoryPaths(): {
-  params: {
-    category: string
-  }
-}[] {
-  const allPostData = getSortedPostsData()
-  const categories = getCategories(allPostData)
-  return categories.map((category) => {
-    return {
-      params: {
-        category,
-      },
-    }
-  })
-}
-
-export function getSortedCategoryPostsData(category: string): PostData[] {
-  const allPostData = getSortedPostsData()
-  const categoryPostsData = []
-  allPostData.forEach((post: PostData) => {
-    if (post.category === category) {
-      categoryPostsData.push(post)
-    }
-  })
-  return categoryPostsData
-}
-
-export function getTags(allPostData: PostData[]): string[] {
-  const tags = []
-  allPostData.forEach((post: PostData) => {
-    if (post.tags) {
-      post.tags.forEach((tag) => {
-        if (!tags.includes(tag)) {
-          tags.push(tag)
-        }
-      })
-    }
-  })
-  return tags
-}
-
-export function getTagPaths(): {
-  params: {
-    tag: string
-  }
-}[] {
-  const allPostData = getSortedPostsData()
-  const tags = getTags(allPostData)
-  return tags.map((tag) => {
-    return {
-      params: {
-        tag,
-      },
-    }
-  })
-}
-
-export function getSortedTagPostsData(tag: string): PostData[] {
-  const allPostData = getSortedPostsData()
-  const tagPostsData = []
-  allPostData.forEach((post: PostData) => {
-    if (post.tags && post.tags.includes(tag)) {
-      tagPostsData.push(post)
-    }
-  })
-  return tagPostsData
 }
