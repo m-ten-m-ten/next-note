@@ -13,23 +13,13 @@ tags:
 
 ## h2見出し
 
-### h3小見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis sit, nihil vel quod error esse nobis quidem culpa et magnam delectus libero consequuntur pariatur itaque sunt suscipit distinctio accusamus repellat.
-
-## h2見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ipsa libero minus, labore excepturi similique deleniti provident repellat facilis veritatis harum pariatur. A in, alias aut ab praesentium qui unde!
-
-## h2見出し
+吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャー
 
 ### h3小見出し
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni voluptate cum dignissimos iure ut deserunt, maiores tempore dolorem eos nihil deleniti tempora, mollitia doloribus sequi praesentium fugit id dolores ea.
-
-### h3小見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sunt rem praesentium veniam, totam illum voluptates blanditiis temporibus, molestias, quaerat recusandae tenetur obcaecati? Inventore deserunt velit temporibus? Explicabo, deserunt, molestiae.
+吾輩は猫である。
+名前はまだ無い。どこで生れたかとんと見当がつかぬ。
+何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。
 
 [リンク：Google](https://google.com)
 
@@ -59,17 +49,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sunt rem pr
 * リスト2
 * リスト3
 
-1.  リスト
-2.  リスト
-3.  リスト
+1. リスト
+2. リスト
+3. リスト
 
 > 引用：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ab aliquid inventore sed omnis necessitatibus nihil in perferendis excepturi voluptatum repellendus explicabo doloribus, nulla consequatur rem autem tenetur consequuntur soluta.
-
-    const $text = "Hello World!!" ;
-    console.log($text);
-
-#### h4小小見出し
-
-    <?php
-      $text = "Hello World!!" ;
-      echo $text ;
