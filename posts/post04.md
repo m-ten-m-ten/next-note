@@ -16,23 +16,11 @@ tags:
 
 ## h2見出し
 
-### h3小見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis sit, nihil vel quod error esse nobis quidem culpa et magnam delectus libero consequuntur pariatur itaque sunt suscipit distinctio accusamus repellat.
-
-## h2見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ipsa libero minus, labore excepturi similique deleniti provident repellat facilis veritatis harum pariatur. A in, alias aut ab praesentium qui unde!
-
-## h2見出し
+恥の多い生涯を送って来ました。自分には、人間の生活というものが、見当つかないのです。自分は東北の田舎に生れましたので、汽車をはじめて見たのは、よほど大きくなってからでした。自分は停車場のブリッジを、上って、降りて、そうしてそれが線路をまたぎ越えるために造られたものだという事には全然気づかず、ただそれは停車場の構内を外国の遊戯場みたいに、複雑に楽しく、ハイカラにするためにのみ、設備せられてあるものだ
 
 ### h3小見出し
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni voluptate cum dignissimos iure ut deserunt, maiores tempore dolorem eos nihil deleniti tempora, mollitia doloribus sequi praesentium fugit id dolores ea.
-
-### h3小見出し
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sunt rem praesentium veniam, totam illum voluptates blanditiis temporibus, molestias, quaerat recusandae tenetur obcaecati? Inventore deserunt velit temporibus? Explicabo, deserunt, molestiae.
+恥の多い生涯を送って来ました。自分には、人間の生活というものが、見当つかないのです。自分は東北の田舎に生れましたので、汽車をはじめて見たのは、よほど大きくなってからでした。自分は停車場のブリッジを、上って、降りて、そうしてそれが線路をまたぎ越えるために造られたものだという事には全然気づかず、ただそれは停車場の構内を外国の遊戯場みたいに、複雑に楽しく、ハイカラにするためにのみ、設備せられてあるものだ
 
 [リンク：Google](https://google.com)
 
@@ -66,13 +54,4 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sunt rem pr
 2.  リスト
 3.  リスト
 
-> 引用：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ab aliquid inventore sed omnis necessitatibus nihil in perferendis excepturi voluptatum repellendus explicabo doloribus, nulla consequatur rem autem tenetur consequuntur soluta.
-
-    const $text = "Hello World!!" ;
-    console.log($text);
-
-#### h4小小見出し
-
-    <?php
-      $text = "Hello World!!" ;
-      echo $text ;
+> 引用：恥の多い生涯を送って来ました。自分には、人間の生活というものが、見当つかないのです。自分は東北の田舎に生れましたので、汽車をはじめて見たのは、よほど大きくなってからでした。自分は停車場のブリッジを、上って、降りて、そうしてそれが線路をまたぎ越えるために造られたものだという事には全然気づかず、ただそれは停車場の構内を外国の遊戯場みたいに、複雑に楽しく、ハイカラにするためにのみ、設備せられてあるものだ
