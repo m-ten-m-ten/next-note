@@ -5,7 +5,7 @@ import remark from 'remark'
 import html from 'remark-html'
 import { getTocIdAddedContentHtml } from './toc'
 
-const postsDirectory = path.join(process.cwd(), 'posts')
+const POSTS_DIR = path.join(process.cwd(), 'posts')
 
 export type PostData = {
   slug: string
@@ -26,32 +26,58 @@ export interface PostDataIncludeContentHTML extends PostData {
 
 export function getAllPostData(): PostData[] {
   // /posts 配下のファイル名を取得する。
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(POSTS_DIR)
 
   const allPostData = []
 
   fileNames.forEach((fileName) => {
-    if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
-      // slugを取得するためにファイル名から".md"を削除する。
-      const slug = fileName.replace(/\.md$/, '')
+    if (fileName.charAt(0) === '.' || fileName.charAt(0) === '_') return
 
-      // マークダウンファイルを文字列として読み取る。
-      const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
+    // slugを取得するためにファイル名から".md"を削除する。
+    const slug = fileName.replace(/\.md$/, '')
 
-      // 投稿のメタデータ部分を解析するためにgray-matterを使う。
-      const matterResult = matter(fileContents)
+    const matterResult = getMatterResult(slug)
 
-      // データをslugと合わせる。
-      allPostData.push({
-        slug,
-        ...matterResult.data,
-      })
-    }
+    // データをslugと合わせる。
+    allPostData.push({
+      slug,
+      ...matterResult.data,
+    })
   })
 
-  return allPostData.sort((a, b) => {
-    if (a.pub_date < b.pub_date) {
+  return sortPostData(allPostData)
+}
+
+export async function getAllPostDataIncludeContent() {
+  // /posts 配下のファイル名を取得する。
+  const fileNames = fs.readdirSync(POSTS_DIR)
+
+  const allPostDataIncludeContent = []
+
+  await fileNames.forEach(async (fileName) => {
+    if (fileName.charAt(0) === '.' || fileName.charAt(0) === '_') return
+    // slugを取得するためにファイル名から".md"を削除する。
+    const slug = fileName.replace(/\.md$/, '')
+
+    const matterResult = getMatterResult(slug)
+
+    const processedContent = await remark()
+      .use(html)
+      .process(matterResult.content)
+    const contentHtml = processedContent.toString()
+
+    allPostDataIncludeContent.push({
+      slug,
+      ...matterResult.data,
+      contentHtml,
+    })
+  })
+  return sortPostData(allPostDataIncludeContent)
+}
+
+function sortPostData(postData) {
+  return postData.sort((a, b) => {
+    if (a.pub_data < b.pub_data) {
       return 1
     } else {
       return -1
@@ -64,7 +90,7 @@ export function getAllPostSlugs(): {
     slug: string
   }
 }[] {
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(POSTS_DIR)
   return fileNames.map((fileName) => {
     return {
       params: {
@@ -74,16 +100,25 @@ export function getAllPostSlugs(): {
   })
 }
 
-export async function getPostData(
+export function getPostData(
+  slug: string
+): {
+  slug: string
+} {
+  const matterResult = getMatterResult(slug)
+  return {
+    slug,
+    ...matterResult.data,
+  }
+}
+
+export async function getPostDataIncludeContent(
   slug: string
 ): Promise<{
   slug: string
   contentHtml: string
 }> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-  const matterResult = matter(fileContents)
+  const matterResult = getMatterResult(slug)
 
   const processedContent = await remark()
     .use(html)
@@ -98,4 +133,12 @@ export async function getPostData(
     contentHtml,
     ...matterResult.data,
   }
+}
+
+function getMatterResult(slug) {
+  // マークダウンファイルを文字列として読み取る。
+  const fullPath = path.join(POSTS_DIR, `${slug}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  // 投稿のメタデータ部分を解析するためにgray-matterを使う。
+  return matter(fileContents)
 }

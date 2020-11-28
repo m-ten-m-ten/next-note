@@ -1,6 +1,6 @@
 import { PostData } from './posts'
 
-const paginationNum = 3
+const paginationNum = 9
 
 export function getPagePaths(
   allPostData: PostData[]

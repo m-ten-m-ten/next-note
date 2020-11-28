@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import NavbarMenuAccordion from './NavbarMenuAccordion'
+import Search from './Search'
 
 export default function NavbarMenu({
   categories,
@@ -8,9 +10,15 @@ export default function NavbarMenu({
   categories: string[]
   tags: string[]
 }): JSX.Element {
+  const [searching, setSearching] = useState(false)
+
+  function toggleSearch() {
+    setSearching(!searching)
+  }
+
   return (
     <div className="navbar__menu">
-      <ul className="navbar__menu-body">
+      <ul className={`navbar__menu-body ${searching ? 'searching' : ''}`}>
         <li className="navbar__menu-item">
           <Link href="/">
             <a className="navbar__menu-link">
@@ -33,7 +41,7 @@ export default function NavbarMenu({
 
         <NavbarMenuAccordion
           list={categories}
-          subDir="catogory"
+          subDir="category"
           menuToggleEN="Category"
           menuToggleJA="カテゴリー"
         />
@@ -44,7 +52,20 @@ export default function NavbarMenu({
           menuToggleEN="Tags"
           menuToggleJA="タグ"
         />
+        <li className="navbar__menu-item">
+          <i
+            onClick={toggleSearch}
+            className="fas fa-search navbar__menu-search-icon"
+          ></i>
+        </li>
       </ul>
+      <div className={`navbar__search ${searching ? 'searching' : ''}`}>
+        <Search query="" />
+        <i
+          onClick={toggleSearch}
+          className="fas fa-times navbar__search-close"
+        ></i>
+      </div>
     </div>
   )
 }

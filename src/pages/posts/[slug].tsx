@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import {
   getAllPostData,
   getAllPostSlugs,
-  getPostData,
+  getPostDataIncludeContent,
   PostDataIncludeContentHTML,
   PostData,
 } from '../../lib/posts'
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ({
   params: { slug: string }
 }) => {
   const slug = params.slug
-  const postData = await getPostData(slug)
+  const postData = await getPostDataIncludeContent(slug)
   const allPostData = getAllPostData()
   return {
     props: {
