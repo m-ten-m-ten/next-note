@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import EventListener from 'react-event-listener'
 import Link from 'next/link'
+import Search from './Search'
 
 export default function NavbarMenuTablet({
   categories,
@@ -83,6 +84,9 @@ export default function NavbarMenuTablet({
               )
             })}
           </div>
+        </li>
+        <li className="navbar__menu-tablet-item">
+          <Search query="" />
         </li>
       </ul>
     </div>

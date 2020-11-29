@@ -17,7 +17,7 @@ export default function Home({
       pageURL={process.env.siteURL}
     >
       <section className="l-index">
-        <PostList postData={allPostData} postCount="3" />
+        <PostList postData={allPostData} postCount="6" />
         <Link href="/page/1">
           <a className="button-fit mt2 mb2">もっと見る</a>
         </Link>
