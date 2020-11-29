@@ -31,18 +31,18 @@ export function getAllPostData(): PostData[] {
   const allPostData = []
 
   fileNames.forEach((fileName) => {
-    if (fileName.charAt(0) === '.' || fileName.charAt(0) === '_') return
+    if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
+      // slugを取得するためにファイル名から".md"を削除する。
+      const slug = fileName.replace(/\.md$/, '')
 
-    // slugを取得するためにファイル名から".md"を削除する。
-    const slug = fileName.replace(/\.md$/, '')
+      const matterResult = getMatterResult(slug)
 
-    const matterResult = getMatterResult(slug)
-
-    // データをslugと合わせる。
-    allPostData.push({
-      slug,
-      ...matterResult.data,
-    })
+      // データをslugと合わせる。
+      allPostData.push({
+        slug,
+        ...matterResult.data,
+      })
+    }
   })
 
   return sortPostData(allPostData)
@@ -55,22 +55,23 @@ export async function getAllPostDataIncludeContent() {
   const allPostDataIncludeContent = []
 
   await fileNames.forEach(async (fileName) => {
-    if (fileName.charAt(0) === '.' || fileName.charAt(0) === '_') return
-    // slugを取得するためにファイル名から".md"を削除する。
-    const slug = fileName.replace(/\.md$/, '')
+    if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
+      // slugを取得するためにファイル名から".md"を削除する。
+      const slug = fileName.replace(/\.md$/, '')
 
-    const matterResult = getMatterResult(slug)
+      const matterResult = getMatterResult(slug)
 
-    const processedContent = await remark()
-      .use(html)
-      .process(matterResult.content)
-    const contentHtml = processedContent.toString()
+      const processedContent = await remark()
+        .use(html)
+        .process(matterResult.content)
+      const contentHtml = processedContent.toString()
 
-    allPostDataIncludeContent.push({
-      slug,
-      ...matterResult.data,
-      contentHtml,
-    })
+      allPostDataIncludeContent.push({
+        slug,
+        ...matterResult.data,
+        contentHtml,
+      })
+    }
   })
   return sortPostData(allPostDataIncludeContent)
 }
