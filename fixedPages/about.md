@@ -12,9 +12,9 @@ description: "当サイト運営者の紹介"
   alt=""
   width="150px"
   />
-  北海道札幌市在住のWEBエンジニア、Tenmei Matsuo（松尾典明）です。
+  北海道札幌市在住のTenmei Matsuo（松尾典明）です。WEBエンジニアを目指しています。
   <br />
-  現在は、リモート開発のできるようになるべく、LaravelやReactの学習をしております。
+  現在はNEXT.js(React.js)やLaravelの学習をしています。
 </p>
 
 ## スキル・経験した技術
@@ -59,7 +59,12 @@ Laravel6で開発したブログAppです。管理者機能(ブログ・ユー�
 最新のコードは下記にてご確認頂けます。<br />
 [https://github.com/m-ten-m-ten/higuma_new](https://github.com/m-ten-m-ten/higuma_new)
 
+## その他実績
+
+約6年、個人事業として運営してきました通販ショップのレビューページです（現在は撤退の最中）。通販という顔の見えないビジネスではありますが、満足していただくよう、尽力してきました。
+https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review
+
 ## お問い合わせ
 
-お仕事募集中です。下記ページよりお問い合わせください。<br />
+下記ページよりお問い合わせください。<br />
 [Laranote - お問い合わせページ](https://laranote.herokuapp.com/contact)
