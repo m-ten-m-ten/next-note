@@ -18,7 +18,7 @@ export default function Header({
       <nav className="navbar l-container">
         <h1 className="navbar__logo">
           <Link href="/">
-            <a>{process.env.siteTitle || 'Next Note'}</a>
+            <a>{process.env.siteName || 'Next Note'}</a>
           </Link>
         </h1>
         <NavbarMenu categories={categories} tags={tags} />

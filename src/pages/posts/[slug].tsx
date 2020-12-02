@@ -3,7 +3,7 @@ import {
   getAllPostData,
   getAllPostSlugs,
   getPostDataIncludeContent,
-  PostDataIncludeContentHTML,
+  PostDataIncludeContentHtml,
   PostData,
 } from '../../lib/posts'
 import Layout from '../../components/Layout'
@@ -18,7 +18,7 @@ export default function Post({
   allPostData,
 }: {
   slug: string
-  postData: PostDataIncludeContentHTML
+  postData: PostDataIncludeContentHtml
   allPostData: PostData[]
 }): JSX.Element {
   return (

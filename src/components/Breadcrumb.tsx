@@ -1,6 +1,15 @@
 import Link from 'next/link'
 
-export default function Breadcrumb({ links }) {
+type BreadcrumbLink = {
+  href: string
+  title: string
+}
+
+export default function Breadcrumb({
+  links,
+}: {
+  links: BreadcrumbLink[]
+}): JSX.Element {
   return (
     <div className="breadcrumb">
       <ul>

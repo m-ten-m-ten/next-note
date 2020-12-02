@@ -7,8 +7,7 @@ import { getTocIdAddedContentHtml } from './toc'
 
 const POSTS_DIR = path.join(process.cwd(), 'posts')
 
-export type PostData = {
-  slug: string
+type MatterResultData = {
   status: string
   title: string
   pub_date: string
@@ -20,7 +19,11 @@ export type PostData = {
   tags: string[]
 }
 
-export interface PostDataIncludeContentHTML extends PostData {
+export type PostData = MatterResultData & {
+  slug: string
+}
+
+export type PostDataIncludeContentHtml = PostData & {
   contentHtml: string
 }
 
@@ -28,19 +31,19 @@ export function getAllPostData(): PostData[] {
   // /posts 配下のファイル名を取得する。
   const fileNames = fs.readdirSync(POSTS_DIR)
 
-  const allPostData = []
+  const allPostData: PostData[] = []
 
   fileNames.forEach((fileName) => {
     if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
       // slugを取得するためにファイル名から".md"を削除する。
       const slug = fileName.replace(/\.md$/, '')
 
-      const matterResult = getMatterResult(slug)
+      const matterResult = getMatterResult(slug, POSTS_DIR)
 
       // データをslugと合わせる。
       allPostData.push({
         slug,
-        ...matterResult.data,
+        ...(matterResult.data as MatterResultData),
       })
     }
   })
@@ -48,37 +51,35 @@ export function getAllPostData(): PostData[] {
   return sortPostData(allPostData)
 }
 
-export async function getAllPostDataIncludeContent() {
+export async function getAllPostDataIncludeContent(): Promise<
+  PostDataIncludeContentHtml[]
+> {
   // /posts 配下のファイル名を取得する。
   const fileNames = fs.readdirSync(POSTS_DIR)
 
-  const allPostDataIncludeContent = []
+  const allPostDataIncludeContent: PostDataIncludeContentHtml[] = []
 
   await fileNames.forEach(async (fileName) => {
     if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
       // slugを取得するためにファイル名から".md"を削除する。
       const slug = fileName.replace(/\.md$/, '')
 
-      const matterResult = getMatterResult(slug)
-
-      const processedContent = await remark()
-        .use(html)
-        .process(matterResult.content)
-      const contentHtml = processedContent.toString()
+      const matterResult = getMatterResult(slug, POSTS_DIR)
+      const contentHtml = await getContentHtml(matterResult.content)
 
       allPostDataIncludeContent.push({
         slug,
-        ...matterResult.data,
+        ...(matterResult.data as MatterResultData),
         contentHtml,
       })
     }
   })
-  return sortPostData(allPostDataIncludeContent)
+  return sortPostData<PostDataIncludeContentHtml[]>(allPostDataIncludeContent)
 }
 
-function sortPostData(postData) {
+function sortPostData<T extends PostData[]>(postData: T): T {
   return postData.sort((a, b) => {
-    if (a.pub_data < b.pub_data) {
+    if (a.pub_date < b.pub_date) {
       return 1
     } else {
       return -1
@@ -101,45 +102,43 @@ export function getAllPostSlugs(): {
   })
 }
 
-export function getPostData(
-  slug: string
-): {
-  slug: string
-} {
-  const matterResult = getMatterResult(slug)
+export function getPostData(slug: string): PostData {
+  const matterResult = getMatterResult(slug, POSTS_DIR)
   return {
     slug,
-    ...matterResult.data,
+    ...(matterResult.data as MatterResultData),
   }
 }
 
 export async function getPostDataIncludeContent(
   slug: string
-): Promise<{
-  slug: string
-  contentHtml: string
-}> {
-  const matterResult = getMatterResult(slug)
-
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-  let contentHtml = processedContent.toString()
-
+): Promise<PostDataIncludeContentHtml> {
+  const matterResult = getMatterResult(slug, POSTS_DIR)
+  const contentHtml = await getContentHtml(matterResult.content)
   //<h2or3>にTable of contents用のid付与。
-  contentHtml = getTocIdAddedContentHtml(contentHtml)
+  const contentHtmlAddedToc = getTocIdAddedContentHtml(contentHtml)
 
   return {
     slug,
-    contentHtml,
-    ...matterResult.data,
+    contentHtml: contentHtmlAddedToc,
+    ...(matterResult.data as MatterResultData),
   }
 }
 
-function getMatterResult(slug) {
+export function getMatterResult(
+  slug: string,
+  fileDir: string
+): matter.GrayMatterFile<string> {
   // マークダウンファイルを文字列として読み取る。
-  const fullPath = path.join(POSTS_DIR, `${slug}.md`)
+  const fullPath = path.join(fileDir, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   // 投稿のメタデータ部分を解析するためにgray-matterを使う。
   return matter(fileContents)
+}
+
+export async function getContentHtml(
+  matterResultContent: string
+): Promise<string> {
+  const processedContent = await remark().use(html).process(matterResultContent)
+  return processedContent.toString()
 }

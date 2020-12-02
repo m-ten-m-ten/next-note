@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { getAllPostData, PostData } from '../lib/posts'
 import {
   FixedPageData,
-  getAllFixedPageSlugs,
+  getFixedPagePaths,
   getFixedPageData,
 } from '../lib/fixedPages'
 import Layout from '../components/Layout'
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllFixedPageSlugs()
+  const paths = getFixedPagePaths()
   return {
     paths,
     fallback: false,

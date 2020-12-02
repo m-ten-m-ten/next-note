@@ -50,7 +50,6 @@ async function makePostsCache() {
     const text = markdownToText(matterResult.content)
 
     const textWords = await filterToken(text)
-    console.log(textWords)
 
     const titleWords = await filterToken(matterResult.data.title)
     const words = [...textWords, ...titleWords]

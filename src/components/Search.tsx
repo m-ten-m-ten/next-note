@@ -1,4 +1,4 @@
-export default function Search({ query }) {
+export default function Search({ query }: { query: string }): JSX.Element {
   return (
     <form className="search" action="/search/" method="get" target="_top">
       <i className="fas fa-search search-icon"></i>

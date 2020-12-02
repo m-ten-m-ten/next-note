@@ -1,24 +1,27 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
-import remark from 'remark'
-import html from 'remark-html'
 import { getTocIdAddedContentHtml } from './toc'
+import { getMatterResult, getContentHtml } from './posts'
 
-const fixedPagesDirectory = path.join(process.cwd(), 'fixedPages')
+const FIXED_PAGES_DIR = path.join(process.cwd(), 'fixedPages')
 
-export type FixedPageData = {
-  contentHtml: string
+type FiexdPageMatterResultData = {
   title: string
   description: string
 }
 
-export function getAllFixedPageSlugs(): {
+export type FixedPageData = FiexdPageMatterResultData & {
+  contentHtml: string
+}
+
+type FixedPagePath = {
   params: {
     fixedPageSlug: string
   }
-}[] {
-  const fileNames = fs.readdirSync(fixedPagesDirectory)
+}
+
+export function getFixedPagePaths(): FixedPagePath[] {
+  const fileNames = fs.readdirSync(FIXED_PAGES_DIR)
   return fileNames.map((fileName) => {
     return {
       params: {
@@ -33,17 +36,11 @@ export async function getFixedPageData(
 ): Promise<{
   contentHtml: string
 }> {
-  const fullPath = path.join(fixedPagesDirectory, `${slug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-  const matterRusult = matter(fileContents)
-  const processedContent = await remark()
-    .use(html)
-    .process(matterRusult.content)
-  let contentHtml = processedContent.toString()
-  contentHtml = getTocIdAddedContentHtml(contentHtml)
+  const matterResult = getMatterResult(slug, FIXED_PAGES_DIR)
+  const contentHtml = await getContentHtml(matterResult.content)
+  const contentHtmlAddedToc = getTocIdAddedContentHtml(contentHtml)
   return {
-    contentHtml,
-    ...matterRusult.data,
+    contentHtml: contentHtmlAddedToc,
+    ...(matterResult.data as FiexdPageMatterResultData),
   }
 }

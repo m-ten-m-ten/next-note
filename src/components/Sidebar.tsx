@@ -14,6 +14,7 @@ export default function Sidebar({
     sidebarFixedWitdh: string, // 固定する要素の横幅(px付き)
     notSetValue = true // 初期値セット判定用
 
+  // 最初のレンダリング後に各値をセット
   useEffect(() => {
     setValue()
   }, [])

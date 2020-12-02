@@ -22,25 +22,22 @@ export function getPagePaths(
 }
 
 export function getPaginatedPostData(
-  paginatedPostData: PostData[],
+  allPostData: PostData[],
   pageNum: number
 ): PostData[] {
-  const lastPageNum = getLastPageNum(paginatedPostData)
+  const lastPageNum = getLastPageNum(allPostData)
   const startPostIndex = (pageNum - 1) * paginationNum
   let endPostIndex: number
 
   // 最後のページに端数の記事がある場合
-  if (
-    pageNum === lastPageNum &&
-    paginatedPostData.length % paginationNum !== 0
-  ) {
-    endPostIndex = startPostIndex + (paginatedPostData.length % paginationNum)
+  if (pageNum === lastPageNum && allPostData.length % paginationNum !== 0) {
+    endPostIndex = startPostIndex + (allPostData.length % paginationNum)
 
     // 最後のページ以外と、最後のページに端数がない場合
   } else {
     endPostIndex = pageNum * paginationNum
   }
-  return paginatedPostData.slice(startPostIndex, endPostIndex)
+  return allPostData.slice(startPostIndex, endPostIndex)
 }
 
 export function getLastPageNum(postData: PostData[]): number {
