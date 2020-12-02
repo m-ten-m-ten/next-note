@@ -62,7 +62,7 @@ Laravel6で開発したブログAppです。管理者機能(ブログ・ユー�
 ## その他実績
 
 約6年、個人事業として運営してきました通販ショップのレビューページです（現在は撤退の最中）。通販という顔の見えないビジネスではありますが、満足していただくよう、尽力してきました。
-https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review
+[https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review](https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review)
 
 ## お問い合わせ
 
