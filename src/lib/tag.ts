@@ -2,7 +2,7 @@ import { getLastPageNum } from './pagination'
 import { PostData } from './posts'
 
 export function getTags(allPostData: PostData[]): string[] {
-  const tags = []
+  const tags: string[] = []
   allPostData.forEach((post: PostData) => {
     if (post.tags) {
       post.tags.forEach((tag) => {
@@ -15,16 +15,17 @@ export function getTags(allPostData: PostData[]): string[] {
   return tags
 }
 
-export function getTagPaths(
-  allPostData: PostData[]
-): {
+type TagPath = {
   params: {
-    tag: string
-    tagPid: string
+    tag: string //タグ
+    tagPid: string //タグ別一覧ページのページNo.（ページネーション用）
   }
-}[] {
+}
+
+// tag別記事一覧ページ(src/pages/tag/[tag]/[tagPid])用のpathを返す。
+export function getTagPaths(allPostData: PostData[]): TagPath[] {
   const tags = getTags(allPostData)
-  const tagPaths = []
+  const tagPaths: TagPath[] = []
 
   tags.forEach((tag) => {
     const allPostDataInTheTag = getAllPostDataInTheTag(allPostData, tag)
@@ -41,11 +42,12 @@ export function getTagPaths(
   return tagPaths
 }
 
+// 全記事から引数のタグを持つ記事を配列で返す。
 export function getAllPostDataInTheTag(
   allPostData: PostData[],
   tag: string
 ): PostData[] {
-  const allPostDataInTheTag = []
+  const allPostDataInTheTag: PostData[] = []
   allPostData.forEach((post: PostData) => {
     if (post.tags && post.tags.includes(tag)) {
       allPostDataInTheTag.push(post)

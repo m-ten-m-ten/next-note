@@ -7,7 +7,7 @@ const { resolve } = require('path')
 
 const nextConfig = {
   env: {
-    siteTitle: '',
+    siteName: '',
     siteURL: 'https://example.com',
   },
   webpack: (config) => {
@@ -15,6 +15,7 @@ const nextConfig = {
     config.resolve.alias['~'] = resolve(__dirname, 'src')
     return config
   },
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig

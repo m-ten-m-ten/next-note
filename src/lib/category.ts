@@ -2,7 +2,7 @@ import { PostData } from './posts'
 import { getLastPageNum } from './pagination'
 
 export function getCategories(allPostData: PostData[]): string[] {
-  const categories = []
+  const categories: string[] = []
   allPostData.forEach((post: PostData) => {
     if (post.category && !categories.includes(post.category)) {
       categories.push(post.category)
@@ -11,16 +11,16 @@ export function getCategories(allPostData: PostData[]): string[] {
   return categories
 }
 
-export function getCategoryPaths(
-  allPostData: PostData[]
-): {
+type CategoryPath = {
   params: {
     category: string
     categoryPid: string
   }
-}[] {
+}
+
+export function getCategoryPaths(allPostData: PostData[]): CategoryPath[] {
   const categories = getCategories(allPostData)
-  const categoryPaths = []
+  const categoryPaths: CategoryPath[] = []
   categories.forEach((category) => {
     const allPostDataInTheCategory = getAllPostDataInTheCategory(
       allPostData,
@@ -43,7 +43,7 @@ export function getAllPostDataInTheCategory(
   allPostData: PostData[],
   category: string
 ): PostData[] {
-  const allPostDataInTheCategoryData = []
+  const allPostDataInTheCategoryData: PostData[] = []
   allPostData.forEach((post: PostData) => {
     if (post.category === category) {
       allPostDataInTheCategoryData.push(post)
