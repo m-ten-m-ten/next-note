@@ -21,15 +21,13 @@ description: "当サイト運営者の紹介"
 
 ### フロントエンド
 
-- HTML, Pug, CSS, Sass
-- jQuery
+- HTML, Pug, CSS, Sass 1年
+- JavaScript jQuery 1年
 
 ### バックエンド
 
-* PHP, Laravel
-* MySQL
-* AWS（s3, Certificate Manager, CloudFront, Route53）
-* Github
+* PHP, Laravel 1年
+* Github 1年
 
 ### その他
 
@@ -61,7 +59,7 @@ Laravel6で開発したブログAppです。管理者機能(ブログ・ユー�
 
 ## その他実績
 
-約6年、個人事業として運営してきました通販ショップのレビューページです（現在は撤退の最中）。通販という顔の見えないビジネスではありますが、満足していただくよう、尽力してきました。
+約6年、個人事業として運営してきました通販ショップのレビューページです（現在はほぼ撤退済み）。通販という顔の見えないビジネスではありますが、満足していただくよう、尽力してきました。
 [https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review](https://shopping.yahoo.co.jp/store_rating/stretchpole-shop/store/review)
 
 ## お問い合わせ
