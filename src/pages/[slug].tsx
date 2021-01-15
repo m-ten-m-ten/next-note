@@ -45,9 +45,9 @@ export default function FixedPage({
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: {
-  params: { fixedPageSlug: string }
+  params: { slug: string }
 }) => {
-  const slug = params.fixedPageSlug
+  const slug = params.slug
   const fixedPageData = await getFixedPageData(slug)
   const allPostData = getAllPostData()
   return {
