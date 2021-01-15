@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { getTocIdAddedContentHtml } from './toc'
 import { getMatterResult, getContentHtml } from './posts'
+import { getSlugs } from './util'
 
 const FIXED_PAGES_DIR = path.join(process.cwd(), 'fixedPages')
 
@@ -16,19 +17,13 @@ export type FixedPageData = FiexdPageMatterResultData & {
 
 type FixedPagePath = {
   params: {
-    fixedPageSlug: string
+    slug: string
   }
 }
 
 export function getFixedPagePaths(): FixedPagePath[] {
   const fileNames = fs.readdirSync(FIXED_PAGES_DIR)
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        fixedPageSlug: fileName.replace(/\.md$/, ''),
-      },
-    }
-  })
+  return getSlugs(fileNames)
 }
 
 export async function getFixedPageData(

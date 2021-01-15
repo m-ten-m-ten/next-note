@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 import { getTocIdAddedContentHtml } from './toc'
+import { getSlugs } from './util'
 
 const POSTS_DIR = path.join(process.cwd(), 'posts')
 
@@ -34,7 +35,7 @@ export function getAllPostData(): PostData[] {
   const allPostData: PostData[] = []
 
   fileNames.forEach((fileName) => {
-    if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
+    if (fileName.slice(-3) === '.md') {
       // slugを取得するためにファイル名から".md"を削除する。
       const slug = fileName.replace(/\.md$/, '')
 
@@ -60,7 +61,7 @@ export async function getAllPostDataIncludeContent(): Promise<
   const allPostDataIncludeContent: PostDataIncludeContentHtml[] = []
 
   await fileNames.forEach(async (fileName) => {
-    if (fileName.charAt(0) !== '.' && fileName.charAt(0) !== '_') {
+    if (fileName.slice(-3) === '.md') {
       // slugを取得するためにファイル名から".md"を削除する。
       const slug = fileName.replace(/\.md$/, '')
 
@@ -93,13 +94,7 @@ export function getAllPostSlugs(): {
   }
 }[] {
   const fileNames = fs.readdirSync(POSTS_DIR)
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        slug: fileName.replace(/\.md$/, ''),
-      },
-    }
-  })
+  return getSlugs(fileNames)
 }
 
 export function getPostData(slug: string): PostData {
