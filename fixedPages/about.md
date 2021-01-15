@@ -55,7 +55,7 @@ Laravel6で開発したブログAppです。管理者機能(ブログ・ユー�
 [ひぐま整骨院・鍼灸治療院](https://chips-higuma.ssl-lolipop.jp/)
 
 最新のコードは下記にてご確認頂けます。<br />
-[https://github.com/m-ten-m-ten/higuma_new](https://github.com/m-ten-m-ten/higuma_new)
+[https://github.com/m-ten-m-ten/higuma](https://github.com/m-ten-m-ten/higuma)
 
 ## その他実績
 
