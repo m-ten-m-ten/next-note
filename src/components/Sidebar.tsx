@@ -20,8 +20,8 @@ export default function Sidebar({
   }, [])
 
   function setValue() {
-    sidebarFixedOriginalTop = sidebarFixedRef.current.getBoundingClientRect()
-      .top
+    sidebarFixedOriginalTop =
+      sidebarFixedRef.current.getBoundingClientRect().top + getScrollTop()
     sidebarFixedHeight = Number(
       document.defaultView
         .getComputedStyle(sidebarFixedRef.current, null)
