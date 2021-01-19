@@ -12,9 +12,9 @@ description: "当サイト運営者の紹介"
   alt=""
   width="150px"
   />
-  北海道札幌市在住のTenmei Matsuo（松尾典明）です。WEBエンジニアを目指しています。
+  北海道札幌市在住の松尾典明（Tenmei Matsuo）です。
   <br />
-  現在はNEXT.js(React.js)やLaravelの学習をしています。
+  当ページではスキルや開発コンテンツを掲載しています。
 </p>
 
 ## スキル・経験した技術
@@ -27,6 +27,9 @@ description: "当サイト運営者の紹介"
 ### バックエンド
 
 * PHP, Laravel 1年
+
+### コード管理
+
 * Github 1年
 
 ### その他
